@@ -41,7 +41,7 @@
         // console.log(array);
 
 
-  // Demonstrate hoisting difference between var and let with code 
+        // Demonstrate hoisting difference between var and let with code 
 
         // console.log(a);
         // var a = 5;
@@ -49,7 +49,12 @@
         // console.log(b);
         // const b = 2;
 
-  // Use call() to borrow a method from one object to another.
+
+
+
+
+
+        // Use call() to borrow a method from one object to another.
 
         // const person1 = {
         //     name : "Aman",
@@ -64,7 +69,11 @@
 
         // person1.greet.call(person,"Noida");
 
-    // Write a program using apply() to pass arguments as an array.
+
+
+
+
+        // Write a program using apply() to pass arguments as an array.
 
         // const person1 = {
         //     name : "Aman",
@@ -79,7 +88,11 @@
 
         // person1.greet.apply(person,["Noida","PW IOI"])
 
-    // Demonstrate bind() and show how it creates a new function
+
+
+
+
+        // Demonstrate bind() and show how it creates a new function
 
         // const person1 = {
         //     name : "Aman",
@@ -97,32 +110,34 @@
         // func(); ---- this is important 
 
 
-        
-
-    // Create a Map:
-    //  add entries
-    //  get value
-   //   convert to array
-
-    //     const map = new Map();
-    //             // add entries
-    //     map.set("name","Aman");
-    //     map.set("Age",19);
-    //     map.set("city","Noida");
-    //             // get value
-    //     console.log(map.get("name"));
-    //     console.log(map.get("Age"));
-    //     console.log(map.get("city"));
-    //             // convert to array
-    //     const mapToarray = [...map];
-    //     console.log(mapToarray);
-    //     const mapTokey = [...map.keys()];
-    //     console.log(mapTokey);
-    //     const mapToValue = [...map.values()];
-    //     console.log(mapToValue);
 
 
-    // Build a mini utility:
+        // Create a Map:
+        //  add entries
+        //  get value
+        //   convert to array
+
+        //     const map = new Map();
+        //             // add entries
+        //     map.set("name","Aman");
+        //     map.set("Age",19);
+        //     map.set("city","Noida");
+        //             // get value
+        //     console.log(map.get("name"));
+        //     console.log(map.get("Age"));
+        //     console.log(map.get("city"));
+        //             // convert to array
+        //     const mapToarray = [...map];
+        //     console.log(mapToarray);
+        //     const mapTokey = [...map.keys()];
+        //     console.log(mapTokey);
+        //     const mapToValue = [...map.values()];
+        //     console.log(mapToValue);
+
+
+
+
+        // Build a mini utility:
         // remove duplicates
         // sort numbers
         // filter values > given number
@@ -133,7 +148,7 @@
 
         // function Result(array,limit){
         //     const unique = [...new Set(array)];
-    
+
         //     const sorted = unique.sort((a,b) => b - a);
 
         //     const result = sorted.filter( n => n > limit);
@@ -142,6 +157,56 @@
         // }
 
         // console.log(Result(array,2));
+
+
+
+
+        // Convert a JavaScript object into JSON and back.
+
+        // const object = {
+        // name : "Harsh",
+        // Age : 19,
+        // City : "Noida"
+        // }
+
+        // const jsonStr = JSON.stringify(object);
+        // console.log(jsonStr);
+
+        // const toJson = JSON.parse(jsonStr);
+        // console.log(toJson);
+
+
+
+
+        // Write a program using setTimeout().
+
+        // function okayBaby(){
+        //     console.log("WoW");
+        // }
+
+        // setTimeout(okayBaby,5000); // after 5s
+
+
+
+
+        // Write a program using setInterval() and stop it using clearInterval().
+        
+        // let count = 0;
+
+        // let intervalId = setInterval(() => {
+        //     count++;
+        //     console.log("count : ", count);
+
+
+        //     if (count == 10) {
+        //         clearInterval(intervalId);
+        //         console.log("Stopped");
+        //     }
+        // }, 2000);
+
+
+
+
 
 
 
