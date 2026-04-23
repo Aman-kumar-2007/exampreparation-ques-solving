@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .black{
+        background-color: black;
+    }
+    button{
+        padding: 10px;
+        width: 100px;
+        height: 40px;
+    }
+</style>
+<body>
+    <button id="btn" onclick="toggleback()">White</button>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const body = document.querySelector('body');
+        function toggleback(){
+            body.classList.toggle('black');
+        }
+    </script>
+</body>
+</html>
