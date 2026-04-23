@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <button id="btn">Count Vowels</button>
+    <h2 id="para">Number of Vowel : 10</h2>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const para = document.getElementById("para");
+        const input = document.getElementById("input");
+
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const text = input.value;
+
+            if (text == "") {
+                para.innerText = "Please Enter String";
+            }
+
+            let n = text.length;
+            let count = 0;
+            for (let i = 0; i < n; i++) {
+                if (text[i] == 'a' || text[i] == 'u' || text[i] == 'e' || text[i] == 'o' || text[i] == 'i' || text[i] == 'A' || text[i] == 'E' || text[i] == 'I' || text[i] == 'O' || text[i] == 'U') {
+                    count++;
+                }
+            }
+
+            para.innerText = `Number of Vowel : ${count}`;
+        })
+    </script>
+</body>
+
+</html>
