@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Age Calculator</h1>
+    <div class="date-area">
+        <input type="date" id="dob">
+        <button id="btn">Calculate Age</button>
+    </div>
+    <p id="age">Age : </p>
+    <p id="month">Total Months : </p>
+    <p id="days">Total Days; </p>
+
+    <script>
+        const btn = document.getElementById("btn");
+
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            let dob = new Date(document.getElementById("dob").value);
+            let today = new Date();
+
+            let years = today.getFullYear() - dob.getFullYear();
+            let months = today.getMonth() - dob.getMonth();
+            let days = today.getDate() - dob.getDate();
+
+            if(days < 0){
+                months--;
+                let lastMonth = new Date(today.getFullYear,today.getMonth,0);
+                days += lastMonth.getDate();
+            }
+            if(months < 0 ){
+                years--;
+                months += 12;
+            }
+
+            document.getElementById("age").innerText = `${years}`
+            document.getElementById("month").innerText = `${months}`
+            document.getElementById("days").innerText = `${days}`
+
+        })
+    </script>
+</body>
+
+</html>
