@@ -6,9 +6,45 @@
     <title>Document</title>
 </head>
 <style>
+    body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: cyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: 0.3s;
+}
 
+.container {
+    text-align: center;
+}
+
+#clock {
+    font-size: 50px;
+    margin: 20px 0;
+    letter-spacing: 2px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    background: cyan;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Light Theme */
+.light {
+    background: #f1f5f9;
+    color: #0f172a;
+}
 </style>
 <body>
+
         <div class="container">
         <h1>Digital Clock</h1>
         <div id="clock">00:00:00</div>
@@ -19,7 +55,6 @@
         </div>
     </div>
 
-        </div>
     <script>
         
     </script>
