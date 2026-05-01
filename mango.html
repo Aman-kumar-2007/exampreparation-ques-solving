@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="item">
+        <button id="btn">Add & sort</button>
+    </div>
+    <ol id="list"></ol>
+
+    <script>
+        const input = document.getElementById("item");
+        const btn = document.getElementById("btn");
+        const list = document.getElementById("list");
+
+        let arr = [];
+
+
+        btn.addEventListener("click", () => {
+
+            let value = input.value.trim();
+            if (value === "") return;
+
+            arr.push(value);
+            arr.sort();
+
+            list.innerHTML = "";
+
+            // display sorted list
+            arr.forEach(item => {
+                let li = document.createElement("li");
+                li.innerText = item;
+                list.appendChild(li);
+            });
+
+            input.value = "";
+        });
+    </script>
+</body>
+
+</html>
