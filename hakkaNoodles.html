@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-sec">
+        <input type="text" id="string">
+        <button id="btn">Click</button>
+    </div>
+    <p id="para" style="display: none;"></p>
+
+    <script>
+         const btn = document.getElementById("btn");
+        const text = document.getElementById("string");
+        const para = document.getElementById("para");
+
+        btn.addEventListener("click", ()=>{
+            let sentence = text.value.split("");
+
+            let l = 0;
+            let r = sentence.length-1;
+
+            while(l < r){
+                let tmp = sentence[l];
+                sentence[l] = sentence[r];
+                sentence[r] = tmp;
+
+                l++;
+                r--;
+            }
+            para.style.display = "block";
+            para.innerText = sentence.join("");
+        })
+    </script>
+</body>
+</html>
