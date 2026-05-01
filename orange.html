@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="total">Total item: 0</p>
+    <div>
+        <input type="text" id="item">
+        <button id="btn" onclick="addItem()">click</button>
+    </div>
+    <ol id="itemList">
+
+    </ol>
+
+    <script>
+        const total = document.getElementById("total");
+        const btn = document.getElementById("btn");
+        const item = document.getElementById("item");
+        const itemList = document.getElementById("itemList");
+
+        let count = 0;
+
+        function addItem(){
+            let itemName = item.value.trim();
+            if(itemName == "") return;
+            
+            let li = document.createElement("li");
+            li.innerText = itemName;
+            itemList.appendChild(li);
+            count++;
+            total.innerText = `Total item ${count}`;
+
+
+        }
+    </script>
+</body>
+</html>
