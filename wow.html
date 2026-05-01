@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="numbers" id="input">
+        <button id="btn">Click</button>
+    </div>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const input = document.getElementById("input");
+
+        let arr = [];
+        btn.addEventListener("click", () => {
+            let number = input.value.trim();
+
+            arr.push(Number(number));
+
+            let uniqueArr = [...new Set(arr)];
+
+            list.innerHTML = "";
+
+            uniqueArr.forEach(num => {
+                let li = document.createElement("li");
+                li.innerText = num;
+                list.appendChild(li);
+            });
+
+            input.value = "";
+        })
+
+    </script>
+</body>
+
+</html>
