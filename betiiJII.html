@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="item">
+    <button id="addBtn">Add</button>
+    <button id="removeBtn">Remove Last</button>
+
+    <ol id="list"></ol>
+
+    <script>
+        const input = document.getElementById("item");
+        const addBtn = document.getElementById("addBtn");
+        const removeBtn = document.getElementById("removeBtn");
+        const list = document.getElementById("list");
+
+        // Add item
+        addBtn.addEventListener("click", () => {
+            let value = input.value.trim();
+
+            if (value === "") return;
+
+            let li = document.createElement("li");
+            li.innerText = value;
+
+            list.appendChild(li);
+            input.value = "";
+        });
+
+        removeBtn.addEventListener("click", () => {
+            if (list.lastElementChild) {
+                list.removeChild(list.lastElementChild);
+            }
+        });
+    </script>
+</body>
+
+</html>
