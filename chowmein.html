@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-sec">
+        <input type="text" id="sentence">
+        <button id="btn">Click !</button>
+    </div>
+    <p id="count">Total Words: 0</p>
+</body>
+
+<script>
+    const text = document.getElementById("sentence");
+    const para = document.getElementById("count");
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click",()=>{
+    let sentence = text.value.trim();
+
+    if(sentence === ""){
+        para.innerText = "Total Words: 0";
+        return;
+    }
+
+    let words = sentence.split(/\s+/);
+    let count = words.length;
+
+        para.innerText = `Total Words: ${count}`
+    })
+</script>
+</html>
