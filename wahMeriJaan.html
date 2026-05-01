@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div>
-        <input type="date" id="today">
+        <input type="date" id="dob">
         <button id="btn">Click</button>
     </div>
-
+    <p id="age">Age: </p>
+    <p id="daysLived">Days Lived: </p>
+    <p id="nextBday">Next Birthday: </p>
     <script>
         const btn = document.getElementById("btn");
-        const todayDate = document.getElementById("today");
+        const dobDate = document.getElementById("dob");
+
+        btn.addEventListener("click", () => {
+            let dob = new Date(dobDate.value);
+            let today = new Date();
+
+            let years = today.getFullYear() - dob.getFullYear();
+            let months = today.getMonth() - dob.getMonth();
+            let days = today.getDate() - dob.getDate();
+
+            let diffTime = today - dob;
+            let daysLived = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            document.getElementById("age").innerText = `Age: ${years}`
+            document.getElementById("daysLived").innerText = `Days Lived: ${daysLived}`
+
+            let nextBirthday = new Date(
+                today.getFullYear(),
+                dob.getMonth(),
+                dob.getDate()
+            )
+            if (nextBirthday < today) {
+                nextBirthday.setFullYear(today.getFullYear() + 1);
+            }
+
+            let diff = nextBirthday - today;
+            let daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+            document.getElementById("nextBday").innerText = `Next Birthday in: ${daysLeft} days`;
+        })
     </script>
 </body>
+
 </html>
