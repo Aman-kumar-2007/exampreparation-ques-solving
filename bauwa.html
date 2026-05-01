@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="item">
+        <button id="btn">Click</button>
+    </div>
+    <ol id="itemList"></ol>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const item = document.getElementById("item");
+        const itemList = document.getElementById("itemList");
+
+        let arr = [];
+        btn.addEventListener("click",()=>{
+            let itemName = item.value;
+
+            arr.push(itemName);
+
+            itemList.innerHTML = "";
+
+            arr.forEach((items)=>{
+                let li = document.createElement("li");
+                li.innerText = items;
+
+                itemList.appendChild(li);
+
+            })
+            item.value = "";
+
+            console.log(arr.length);
+        })
+    </script>
+</body>
+</html>
