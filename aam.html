@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-sec">
+        <input type="text" id="sentence">
+        <button id="btn">Click !</button>
+    </div>
+    <p id="count"></p>
+
+    <script>
+    const text = document.getElementById("sentence");
+    const para = document.getElementById("count");
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click",()=>{
+   let sentence = text.value;
+
+    let alphabets = 0;
+    let digits = 0;
+
+    for (let i = 0; i < sentence.length; i++) {
+        let ch = sentence[i];
+
+        if (ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z') {
+            alphabets++;
+        }
+        else if (ch >= '0' && ch <= '9') {
+            digits++;
+        }
+    }
+
+    para.innerText = `Alphabets: ${alphabets}, Digits: ${digits}`;
+    })
+    </script>
+</body>
+</html>
