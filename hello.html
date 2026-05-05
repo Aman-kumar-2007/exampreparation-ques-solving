@@ -44,16 +44,24 @@ button {
 }
 </style>
 <body>
-     <h1>Toggle Paragraph Example</h1>
-    <button id="btn">Toggle</button>
-    <p id="para">This is Sample Paragraph.Click button to hide/show me!</p>
     <script>
-        const btn = document.getElementById("btn");
-        const para = document.getElementById("para");
+     const text = document.getElementById("sentence");
+    const para = document.getElementById("count");
+    const btn = document.getElementById("btn");
 
-        btn.addEventListener("click",()=>{
-            para.classList.toggle("hide");
-        })
+    btn.addEventListener("click",()=>{
+    let sentence = text.value.trim();
+
+    if(sentence === ""){
+        para.innerText = "Total Words: 0";
+        return;
+    }
+
+    let words = sentence.split(/\s+/);
+    let count = words.length;
+
+        para.innerText = `Total Words: ${count}`
+    })
     </script>
 </body>
 </html>
