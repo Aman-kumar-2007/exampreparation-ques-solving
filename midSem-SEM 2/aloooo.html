@@ -11,5 +11,28 @@
         <button id="btn">Click !</button>
     </div>
     <p id="count"></p>
+
+    <script>
+        const text = document.getElementById("sentence");
+        const para = document.getElementById("count");
+        const btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+
+            let sentence = text.value.toLowerCase();
+
+            let words = sentence.split(" ");
+
+            for (let i = 0; i < words.length; i++) {
+                if (words[i] !== "") {
+                    words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+                }
+            }
+
+            let result = words.join(" ");
+
+            para.innerText = result;
+        });
+    </script>
 </body>
 </html>
