@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gym Dashboard</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2 class="logo">GYM<span>PRO</span></h2>
+
+      <ul>
+        <li class="tab active" data-tab="overview">
+          <i class="fa-solid fa-house"></i>
+          Overview
+        </li>
+
+        <li class="tab" data-tab="analytics">
+          <i class="fa-solid fa-chart-line"></i>
+          Analytics
+        </li>
+
+        <li class="tab" data-tab="settings">
+          <i class="fa-solid fa-gear"></i>
+          Settings
+        </li>
+      </ul>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" class="content active-section">
+
+        <div class="top-bar">
+          <h1>Welcome Back, Aman 👋</h1>
+        </div>
+
+        <div class="cards">
+
+          <div class="card glow">
+            <div>
+              <h3>Active Plan</h3>
+              <p>Gold Membership</p>
+            </div>
+            <i class="fa-solid fa-crown"></i>
+          </div>
+
+          <div class="card glow">
+            <div>
+              <h3>Membership Expiry</h3>
+              <p>25 May 2026</p>
+            </div>
+            <i class="fa-solid fa-calendar"></i>
+          </div>
+
+          <div class="card glow">
+            <div>
+              <h3>Total Sessions</h3>
+              <p id="sessions">48</p>
+            </div>
+            <i class="fa-solid fa-dumbbell"></i>
+          </div>
+
+          <div class="card glow">
+            <div>
+              <h3>Reward Points</h3>
+              <p id="points">1200</p>
+            </div>
+            <i class="fa-solid fa-star"></i>
+          </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+          <button>Book Session</button>
+          <button>Upgrade Plan</button>
+          <button>View Trainers</button>
+        </div>
+
+      </section>
+
+
+      <!-- ANALYTICS -->
+      <section id="analytics" class="content">
+
+        <div class="chart-controls">
+          <button class="data-btn active-data" data-type="weekly">Weekly</button>
+          <button class="data-btn" data-type="monthly">Monthly</button>
+          <button class="data-btn" data-type="yearly">Yearly</button>
+        </div>
+
+
+        <div class="chart-grid">
+
+          <div class="chart-card">
+            <h2>Workout Activity</h2>
+            <canvas id="lineChart"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h2>Membership Usage</h2>
+            <canvas id="doughnutChart"></canvas>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SETTINGS -->
+      <section id="settings" class="content">
+
+        <div class="settings-card">
+          <h2>Settings</h2>
+
+          <div class="setting-row">
+            <span>Notifications</span>
+            <input type="checkbox" checked />
+          </div>
+
+          <div class="setting-row">
+            <span>Dark Mode</span>
+            <button id="themeToggle">Toggle Theme</button>
+          </div>
+
+          <div class="setting-row">
+            <span>Profile</span>
+            <button>Edit</button>
+          </div>
+
+          <button class="logout-btn">Logout</button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script src="js/app.js"></script>
+</body>
+</html>
+
+---
+
+# 3. app.js
+
+```javascript
+// =============================
+// TAB SWITCHING
+// =============================
+
+const tabs = document.querySelectorAll('.tab');
+const sections = document.querySelectorAll('.content');
+
+
+tabs.forEach(tab => {
+
+  tab.addEventListener('click', () => {
+
+    tabs.forEach(item => item.classList.remove('active'));
+    tab.classList.add('active');
+
+    const target = tab.dataset.tab;
+
+    sections.forEach(section => {
+      section.classList.remove('active-section');
+    });
+
+    document.getElementById(target)
+      .classList.add('active-section');
+
+  });
+
+});
+
+
+// =============================
+// REWARD POINTS REALTIME UPDATE
+// =============================
+
+const points = document.getElementById('points');
+
+let currentPoints = 1200;
+
+setInterval(() => {
+
+  currentPoints += Math.floor(Math.random() * 10);
+
+  points.innerText = currentPoints;
+
+}, 3000);
+
+
+// =============================
+// CHART DATA
+// =============================
+
+const datasets = {
+
+  weekly: {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    data: [12, 19, 10, 15, 22, 18, 25]
+  },
+
+  monthly: {
+    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+    data: [120, 190, 300, 250]
+  },
+
+  yearly: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    data: [500, 700, 900, 750, 850, 1000]
+  }
+
+};
+
+
+// =============================
+// LINE CHART
+// =============================
+
+const lineCtx = document.getElementById('lineChart');
+
+const lineChart = new Chart(lineCtx, {
+
+  type: 'line',
+
+  data: {
+    labels: datasets.weekly.labels,
+
+    datasets: [{
+      label: 'Workout Activity',
+      data: datasets.weekly.data,
+      borderColor: '#00e5ff',
+      backgroundColor: 'rgba(0,229,255,0.2)',
+      tension: 0.4,
+      fill: true
+    }]
+  },
+
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white'
+        }
+      }
+    },
+    scales: {
+      y: {
+        ticks: {
+          color: 'white'
+        }
+      },
+      x: {
+        ticks: {
+          color: 'white'
+        }
+      }
+    }
+  }
+
+});
+
+
+// =============================
+// DOUGHNUT CHART
+// =============================
+
+const doughnutCtx = document.getElementById('doughnutChart');
+
+const doughnutChart = new Chart(doughnutCtx, {
+
+  type: 'doughnut',
+
+  data: {
+    labels: ['Used', 'Remaining'],
+
+    datasets: [{
+      data: [70, 30],
+      backgroundColor: ['#00e5ff', '#1e293b']
+    }]
+  },
+
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white'
+        }
+      }
+    }
+  }
+
+});
+
+
+// =============================
+// DATA BUTTONS
+// =============================
+
+const dataButtons = document.querySelectorAll('.data-btn');
+
+
+dataButtons.forEach(button => {
+
+  button.addEventListener('click', () => {
+
+    dataButtons.forEach(btn => {
+      btn.classList.remove('active-data');
+    });
+
+    button.classList.add('active-data');
+
+    const type = button.dataset.type;
+
+    lineChart.data.labels = datasets[type].labels;
+
+    lineChart.data.datasets[0].data = datasets[type].data;
+
+    lineChart.update();
+
+  });
+
+});
+
+
+// =============================
+// THEME TOGGLE
+// =============================
+
+const themeToggle = document.getElementById('themeToggle');
+
+
+themeToggle.addEventListener('click', () => {
+
+  document.body.classList.toggle('light-mode');
+
+});
+
+
+// =============================
+// REALTIME CHART UPDATE
+// =============================
+
+setInterval(() => {
+
+  lineChart.data.datasets[0].data =
+    lineChart.data.datasets[0].data.map(value => {
+      return value + Math.floor(Math.random() * 5 - 2);
+    });
+
+  lineChart.update();
+
+}, 5000);
+```
+
+---
+
+# HOW TO RUN
+
+## STEP 1
+
+Create folders:
+
+```txt
+project
+  ├── css
+  └── js
+```
+
+---
+
+## STEP 2
+
+Create files:
+
+* index.html
+* css/style.css
+* js/app.js
+
+---
+
+## STEP 3
+
+Copy paste code.
+
+---
+
+## STEP 4
+
+Open:
+
+```txt
+index.html
+```
+
+in browser.
+
+---
+
+# FEATURES INCLUDED
+
+✅ Sidebar Navigation
+
+✅ Tab Switching
+
+✅ Membership Cards
+
+✅ Responsive Design
+
+✅ Chart.js Integration
+
+✅ Dynamic Dataset Toggle
+
+✅ Realtime Updates
+
+✅ Dark Mode Toggle
+
+✅ Hover Effects
+
+✅ Modern Dashboard UI
+
+✅ Mobile Responsive
+
+---
+
+# FUTURE IMPROVEMENTS
+
+You can later add:
+
+* Login page
+* Backend
+* Firebase
+* User authentication
+* Real APIs
+* Notifications
+* Download reports
+* Trainer booking system
+* Attendance system
+
+---
+
+# IMPORTANT
+
+Build this yourself line-by-line.
+
+Do NOT just copy.
+
+Understand:
+
+* event listeners
+* classList
+* setInterval
+* Chart.js
+* responsive CSS
+* DOM manipulation
+
+That is the REAL learning.
