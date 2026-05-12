@@ -66,6 +66,30 @@
                 </div>
             </div>
         </div>
-        
+
+         <div class="analytics-charts-sec">
+
+            <div class="chart-activity-sec">
+                <div class="chart-activity-up">
+                    <div class="activity-up-text">
+                        <h3 class="activity-text" id="activity-topic-text">Calories Burned</h3>
+                        <p id="activity-topic-subtext" class="subheading activity-subtext">Calories burned over time</p>
+                    </div>
+
+                    <div class="topic-charts">
+                        <select id="activity-topic">
+                            <option  value = "calories">Calories</option>
+                            <option  value = "attendence">Attendence</option>
+                            <option  value = "workoutSessions">Workout Sessions</option>
+                            <option  value = "weightProgress">Weight Progress</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="activity-trend-chart">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+            
 </body>
 </html>
