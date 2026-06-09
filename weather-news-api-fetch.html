@@ -8,7 +8,9 @@
 
 </head>
 <style>
-
+    #city-error{
+        display: none;
+    }
 </style>
 
 <body>
@@ -54,6 +56,18 @@
 
             return weatherData;
         }
+
+        document.getElementById("weather-btn").addEventListener("click", async () => {
+
+            const city = document.getElementById("weatherCity").value.toLowerCase();
+
+            let obj = await getWeather(city);
+
+            console.log(obj.current_weather.temperature);
+
+
+
+        })
 
         getWeather("delhi");
 
