@@ -11,6 +11,8 @@
     #city-error {
         display: none;
     }
+
+
 </style>
 
 <body>
@@ -31,17 +33,17 @@
 
         <div class="news-section">
             <div class="upper-news">
-                <input type="text" id="weatherCity" placeholder="Enter keywords...">
+                <input type="text" id="newsCategory" placeholder="Enter keywords...">
                 <button id="news-btn">Seach News</button>
             </div>
 
             <div class="news-card">
                 <div class="img-sec">
-                    <img src="" alt="image">
+                    <img src="" alt="image" id="img-news">
                 </div>
                 <div class="news-card-details">
                     <h4 id="source">AaIYOOO</h4>
-                    <h3 class="title">Hello JII</h3>
+                    <h3 id="title">Hello JII</h3>
                     <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti enim ab ad deserunt quam perferendis, ut nobis quia reiciendis facere?</p>
                 </div>
                 <hr>
@@ -64,6 +66,8 @@
 
             if (!locData.results) {
                 console.log("City not found");
+                // document.getElementById("city-error").style.display = "block";
+                // document.querySelector('.lower').style.display = "none";
                 return;
             }
 
@@ -76,12 +80,11 @@
             const weatherData = await weatherRes.json();
 
             console.log(weatherData);
-
             return weatherData;
         }
 
-        document.getElementById("weather-btn").addEventListener("click", async () => {
-
+        document.getElementById("weather-btn").addEventListener("click", async (e) => {
+            e.preventDefault();
             const city = document.getElementById("weatherCity").value.toLowerCase();
 
             let obj = await getWeather(city);
@@ -89,7 +92,7 @@
             console.log(obj.current_weather.temperature);
 
             document.getElementById("temp").innerText = `Temp : ${obj.current_weather.temperature}° C`
-            document.getElementById("windSpeed").innerText = `Wind Speed : ${obj.current_weather.windSpeed}Km/hr`
+            document.getElementById("windSpeed").innerText = `Wind Speed : ${obj.current_weather.windspeed} km/hr`
 
         })
 
@@ -97,13 +100,29 @@
 
 
         async function getNews(category) {
-            const newsUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&apikey=${API_KEY}`
+            const newsUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&apikey=${API_KEY}`;
+
             const res = await fetch(newsUrl);
 
             const newsData = await res.json();
 
-            console.log(newsData);
+            console.log(newsData.articles);
+            return newsData.articles;
         }
+
+        document.getElementById("news-btn").addEventListener("click",async (e)=>{
+            e.preventDefault();
+            const category = document.getElementById("newsCategory").value.toLowerCase();
+
+            let obj = await getNews(category);
+
+            document.getElementById("title").textContent = `${obj[0].title}`;
+            document.getElementById("source").textContent = `${obj[0].source.name}`;
+            document.getElementById("description").textContent = `${obj[0].description}`;
+            document.getElementById("date").textContent = `${obj[0].publishedAt}`;
+            document.getElementById("img-news").src = obj[0].image;
+
+        });
 
 
 
