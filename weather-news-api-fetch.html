@@ -8,7 +8,7 @@
 
 </head>
 <style>
-    #city-error{
+    #city-error {
         display: none;
     }
 </style>
@@ -24,10 +24,12 @@
             <h1 id="city-error">City not Found</h1>
 
             <div class="lower">
-                <h2 id="Temp">Temp : 0&deg; C</h2>
+                <h2 id="temp">Temp : 0&deg; C</h2>
                 <h2 id="windSpeed">Wind Speed : 0km/hr</h2>
             </div>
         </div>
+
+        
     </main>
 
 
@@ -65,13 +67,26 @@
 
             console.log(obj.current_weather.temperature);
 
-
+            document.getElementById("temp").innerText = `Temp : ${obj.current_weather.temperature}° C`
+            document.getElementById("windSpeed").innerText = `Wind Speed : ${obj.current_weather.windSpeed}Km/hr`
 
         })
 
-        getWeather("delhi");
+        const API_KEY = "6853a4c4a5c1518b55a4600dd0c750a6";
 
-        
+
+        async function getNews(category) {
+            const newsUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&apikey=${API_KEY}`
+            const res = await fetch(newsUrl);
+
+            const newsData = await res.json();
+
+            console.log(newsData);
+        }
+
+
+
+
 
 
 
