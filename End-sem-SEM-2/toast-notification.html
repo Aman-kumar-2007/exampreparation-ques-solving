@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function toastNotification(message) {
+            this.message = message;
+
+            this.toast = document.createElement("div");
+            this.toast.textContent = this.message;
+        }
+
+        toastNotification.prototype.show = function () {
+            document.body.appendChild(this.toast);
+
+            setTimeout(function () {
+                this.toast.remove();
+            }.bind(this), 3000);
+        }
+
+        const toast = new toastNotification("Action Successfully !!");
+
+        toast.show();
+    </script>
+</body>
+
+</html>
