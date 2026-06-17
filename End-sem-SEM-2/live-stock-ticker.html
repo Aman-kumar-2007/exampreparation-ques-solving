@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <button id="btn">Stop Ticker</button>
+
+    <script>
+        class LiveTicker {
+
+            constructor(id) {
+                this.container = document.getElementById(id);
+
+                this.tickerNode = document.createElement("span");
+
+                this.container.append(this.tickerNode);
+
+                this.intervalId = setInterval(() => {
+                    let a = Math.floor(Math.random() * 100);
+                    this.tickerNode.innerText = `Stock Price : $${a}`
+                }, 1000);
+            }
+
+            destroy() {
+                clearInterval(this.intervalId);
+
+                this.tickerNode.remove();
+
+                this.tickerNode = null;
+            }
+
+        }
+
+         const ticker = new LiveTicker("container");
+
+        document.getElementById("btn").addEventListener("click", () => {
+                ticker.destroy();
+            });
+
+    </script>
+</body>
+
+</html>
