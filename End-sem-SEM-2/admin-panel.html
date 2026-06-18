@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="badge-list"></ul>
+    <script>
+        var obj = {}
+        Object.defineProperties(obj, {
+            role: { value: "SuperAdmin", writable: false, configurable: false, enumerable: true },
+            department: { value: "IT", writable: true, enumerable: false },
+        })
+
+        obj.accessLevel = 1;
+        
+        const badgeList = document.getElementById("badge-list");
+
+        Object.entries(obj).forEach(([key, value]) => {
+
+            const li = document.createElement("li");
+
+            li.textContent = `Key: ${key}, Value: ${value}`;
+
+            badgeList.appendChild(li);
+        });
+    </script>
+</body>
+
+</html>
