@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="summary-card">
+
+    </div>
+
+    <script>
+        const booking = {
+            id: 101, customer: {
+                details: {
+                    name: "Alice"
+                }
+            }
+        };
+
+        const customerPhone = booking.customer?.contact?.phone ?? "No Phone Provided";
+        
+        const hasDiscount = "discountCode" in booking;
+
+        const p = document.createElement("p");
+
+        p.textContent = `Phone: ${customerPhone} | Discount Applied: ${hasDiscount}`;
+
+        document.getElementById("summary-card").appendChild(p);
+    </script>
+</body>
+
+</html>
