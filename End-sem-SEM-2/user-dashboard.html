@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>user Dashboard</title>
 </head>
+
 <body>
     <input type="text" name="" id="username">
     <input type="color" id="themeColor">
     <button class="btn" onclick="saveSettings();">Save Settings</button>
     <h1 id="msg"></h1>
     <script>
-        const btn  = document.getElementById("btn");
+        const btn = document.getElementById("btn");
         const username = document.getElementById("username");
         const themeColor = document.getElementById("themeColor");
         const msg = document.getElementById("msg");
 
-        function saveSettings(){
+        function saveSettings() {
             const usernameVal = username.value;
             const themeColorVal = themeColor.value;
 
-            const userObj = { username : usernameVal, themeColor : themeColorVal };
+            const userObj = { username: usernameVal, themeColor: themeColorVal };
 
-            localStorage.setItem("userSettings",JSON.stringify(userObj));
+            localStorage.setItem("userSettings", JSON.stringify(userObj));
+
+            load();
         }
 
-        function load(){
-            const obj = JSON.parse( localStorage.getItem("userSettings") );
+        function load() {
+            const data = JSON.parse(localStorage.getItem("userSettings"));
+
+            if (!data) return;
+
+            const obj = JSON.parse(data);
 
             msg.textContent = `Welcome back, ${obj.username}`;
 
@@ -35,6 +43,8 @@
         }
 
         load();
+
     </script>
 </body>
+
 </html>
