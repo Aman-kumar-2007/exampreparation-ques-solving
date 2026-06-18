@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Check</title>
+
+    <style>
+        .warning{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: red;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+
+    function enforceDesktopView(){
+
+        const width = window.innerWidth;
+
+        if(width < 1024){
+
+            const warning = document.createElement("div");
+
+            warning.className = "warning";
+
+            warning.textContent =
+            "Please switch to a desktop device. You will be redirected in 5 seconds.";
+
+            document.body.appendChild(warning);
+
+            setTimeout(() => {
+
+                window.location.href =
+                "https://mobile.company.com";
+
+            }, 5000);
+        }
+    }
+
+    enforceDesktopView();
+
+</script>
+
+</body>
+</html>
