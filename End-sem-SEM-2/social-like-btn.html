@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="" id="likeBtn">Like(0)</button>
+
+    <script>
+        class LikeComponent {
+            constructor(id) {
+                this.btn = document.getElementById(id);
+                this.likes = 0;
+
+                this.btn.addEventListener("click",
+                    this.registerClick.bind(this)
+                );
+            }
+
+            registerClick() {
+                this.likes++;
+                this.btn.innerText = `Like(${this.likes})`;
+            }
+        }
+
+        const likeComponent = new LikeComponent("likeBtn");
+    </script>
+</body>
+
+</html>
