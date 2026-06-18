@@ -8,7 +8,33 @@
 <body>
     <input type="text" name="" id="username">
     <input type="color" id="themeColor">
-    <button class="btn">Save Settings</button>
-    
+    <button class="btn" onclick="saveSettings();">Save Settings</button>
+    <h1 id="msg"></h1>
+    <script>
+        const btn  = document.getElementById("btn");
+        const username = document.getElementById("username");
+        const themeColor = document.getElementById("themeColor");
+        const msg = document.getElementById("msg");
+
+        function saveSettings(){
+            const usernameVal = username.value;
+            const themeColorVal = themeColor.value;
+
+            const userObj = { username : usernameVal, themeColor : themeColorVal };
+
+            localStorage.setItem("userSettings",JSON.stringify(userObj));
+        }
+
+        function load(){
+            const obj = JSON.parse( localStorage.getItem("userSettings") );
+
+            msg.textContent = `Welcome back, ${obj.username}`;
+
+            document.body.style.backgroundColor = obj.themeColor;
+
+        }
+
+        load();
+    </script>
 </body>
 </html>
