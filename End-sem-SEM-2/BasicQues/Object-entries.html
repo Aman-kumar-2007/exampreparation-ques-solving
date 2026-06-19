@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="box">
+
+    </div>
+    <script>
+        const student = {
+            name: "Aman",
+            age: 20,
+            course: "BTech"
+        }
+
+        const box = document.querySelector(".box");
+
+        Object.entries(student).forEach(([key,value])=>{
+            const p = document.createElement("p");
+            p.innerText = `${key} : ${value}`;
+
+            box.append(p);
+        })
+
+    </script>
+</body>
+
+</html>

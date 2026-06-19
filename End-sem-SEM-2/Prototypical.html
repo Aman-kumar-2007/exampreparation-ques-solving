@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output"></div>
+
+<script>
+    function Person(name) {
+        this.name = name;
+    }
+
+    Person.prototype.show = function () {
+        return `Name : ${this.name}`;
+    };
+
+    function Student(name, grade) {
+        Person.call(this, name);   // inherit properties
+        this.grade = grade;
+    }
+
+    Student.prototype = Object.create(Person.prototype); // prototype chain
+    Student.prototype.constructor = Student;
+
+    Student.prototype.showGrade = function () {
+        return `Grade : ${this.grade}`;
+    };
+
+    const s1 = new Student("Aman", "A");
+
+    document.getElementById("output").innerHTML = `
+        <p>${s1.show()}</p>
+        <p>${s1.showGrade()}</p>
+    `;
+    
+</script>
+
+</body>
+</html>
