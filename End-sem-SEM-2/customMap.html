@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        Array.prototype.myMap = function (callback, thisArg) {
+            const result = [];
+
+            for (let i = 0; i < this.length; i++) {
+
+                if (!(i in this)) continue;
+
+                result[i] = callback.call(thisArg, this[i], i, this );
+            }
+
+            return result;
+        };
+
+
+        const nums = [1, 2, 3, 4, 5];
+
+        const output = nums.myMap(function (num) {
+            return num * 10;
+        });
+
+        console.log(output);
+        
+    </script>
+</body>
+
+</html>
