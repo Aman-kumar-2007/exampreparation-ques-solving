@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script>
+        const product = {};
+
+        Object.defineProperties(product,{
+            productId : {value: 1, writable: false, configurable: false, enumerable: true},
+            category : {value : "cloths", writable: true,configurable: false,enumerable:true}
+        })
+        product.price = 799;
+
+        const list = document.getElementById("list");
+
+        Object.entries(product).forEach(([key, value]) => {
+              const li = document.createElement("li");
+              li.textContent = `Key: ${key}, Value: ${value}`;
+              list.appendChild(li);
+        });
+
+    </script>
+</body>
+</html>
