@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="incBtn">Count: 0</button>
+
+    <script>
+        class Counter{
+            constructor(id){
+                this.btn = document.getElementById("incBtn");
+                this.count = 0;
+
+                this.btn.addEventListener("click",()=>{
+                    this.count++;
+                    this.btn.innerText = `Count : ${this.count}`;
+                })
+            }
+        }
+
+       const c = new Counter("incBtn");
+    </script>
+</body>
+</html>
