@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Car(name) {
+            this.name = name;
+        }
+
+        Car.prototype.start = function () {
+            return `${this.name} started`;
+        }
+
+
+        const car1 = new Car("BMW");
+        const car2 = new Car("Audi");
+        const car3 = new Car("Tesla");
+
+        console.log(car1.start());
+        console.log(car2.start());
+        console.log(car3.start());
+    </script>
+</body>
+
+</html>
