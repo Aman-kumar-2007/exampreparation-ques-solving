@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Employee(name, salary) {
+            this.name = name;
+            this.salary = salary;
+        }
+
+        Employee.prototype.displayInfo = function(){
+            console.log(this.name, this.salary);
+        }
+
+
+        const a = new Employee("Aman", 1000);
+        a.displayInfo();
+    </script>
+</body>
+
+</html>
