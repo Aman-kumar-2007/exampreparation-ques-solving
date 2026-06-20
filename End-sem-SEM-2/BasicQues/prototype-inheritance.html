@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function User(name) {
+            this.name = name;
+        }
+
+
+        User.prototype.show = function () {
+            return `Name: ${this.name}`;
+        };
+
+        function PremiumUser(name, plan) {
+            User.call(this, name);   // inherit properties
+            this.plan = plan;
+        }
+
+        PremiumUser.prototype = Object.create(User.prototype); // inherit methods
+        PremiumUser.prototype.constructor = PremiumUser;
+
+        PremiumUser.prototype.showPlan = function () {
+            return `Plan: ${this.plan}`;
+        };
+
+        const user1 = new PremiumUser("Aman", "Gold");
+
+        console.log(user1.show());
+        console.log(user1.showPlan());
+    </script>
+</body>
+
+</html>

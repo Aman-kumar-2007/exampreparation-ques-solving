@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        Array.prototype.myFilter = function(callback){
+            var result = [];
+
+            for(let i=0; i<this.length; i++){
+                if(callback(this[i],i,this)){
+                    result.push(this[i]);
+                }
+            }
+
+            return result;
+        }
+
+        const nums = [1,2,3,4,5,2,3,4];
+        console.log(nums.myFilter(num => num < 5 ));
+
+    </script>
+</body>
+</html>
