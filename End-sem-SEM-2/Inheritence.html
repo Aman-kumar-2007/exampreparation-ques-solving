@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function User(name,email){
+            this.name = name;
+            this.email = email;
+        }
+
+        User.prototype.show = function(){
+            console.log("name :",this.name);
+            console.log("email :",this.email);
+        }
+
+        function PremiumUser(name,email,plan){
+            User.call(this,name,email);
+            this.plan = plan;
+        }
+
+        PremiumUser.prototype = Object.create(User.prototype);
+        PremiumUser.prototype.constructor = PremiumUser;
+
+        PremiumUser.prototype.showPlan = function(plan){
+            console.log(this.plan);
+        }
+
+        const u1 = new PremiumUser("Aman","aman@gmail.com","Premium");
+
+        u1.show();
+        u1.showPlan();
+    </script>
+</body>
+</html>
