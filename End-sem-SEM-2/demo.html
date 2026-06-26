@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="product-list"></ul>.
+    <script>
+        Array.prototype.myMap = function (callback, thisArg) {
+            const result = [];
+            for (let i = 0; i < this.length; i++) {
+                if (!i in this) continue;
+
+                result[i] = callback.call(thisArg, this[i], i, this);
+            }
+            return result;
+        }
+
+        const products = [
+            { name: "Keyboard", price: 1200 },
+            { name: "Mouse", price: 700 },
+            { name: "Monitor", price: 15000 },
+            { name: "Pen Drive", price: 500 }
+        ];
+
+        const names = products.myMap(product => product.name);
+        console.log(names);
+        const list = document.getElementById("product-list");
+
+        names.forEach(name => {
+            const li = document.createElement("li");
+            li.innerText = name;
+            list.appendChild(li);
+        });
+
+
+    </script>
+</body>
+
+</html>

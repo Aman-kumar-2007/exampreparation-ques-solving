@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="memberName">
+    <input type="text" name="" id="membershipType">
+    <button id="btn">Register Member</button>
+
+
+    <section id="members"></section>
+
+    <script>
+        function libraryMember(name, type) {
+            this.name = name;
+            this.type = type;
+        }
+
+        libraryMember.prototype.register = function () {
+            const div = document.createElement("div");
+
+            div.innerHTML = `
+        <h3>${this.name}</h3>
+        <p>Type: ${this.type}</p>
+    `;
+
+            if (this.type === "Premium") {
+                div.style.backgroundColor = "gold";
+            }
+            document.getElementById("members").appendChild(div);
+        };
+
+        document.getElementById("btn").addEventListener("click", () => {
+
+            const name = document.getElementById("memberName").value;
+            const type = document.getElementById("membershipType").value;
+
+            const member = new libraryMember(name, type);
+
+            member.register();
+
+        });
+
+    </script>
+</body>
+
+</html>
