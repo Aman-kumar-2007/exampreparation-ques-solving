@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="students"></ul>
+    <script>
+        function student(name) {
+            this.name = name;
+            this.element = document.createElement("li");
+            this.element.innerText = this.name;
+        }
+
+        student.prototype.renderStudent = function () {
+            const a = document.getElementById("students");
+            students.append(this.element);
+        }
+
+        function PremiumStudent(name) {
+            student.call(this,name);
+        }
+
+        PremiumStudent.prototype = Object.create(student.prototype);
+        PremiumStudent.prototype.constructor = PremiumStudent;
+
+        PremiumStudent.prototype.addPremiumBadge = function () {
+            this.element.innerText += " ⭐ Premium";
+            this.element.style.backgroundColor = "gold";
+        }
+        const s1 = new PremiumStudent("Aman");
+
+        s1.addPremiumBadge();
+        s1.renderStudent();
+    </script>
+</body>
+
+</html>
