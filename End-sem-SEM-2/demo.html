@@ -6,88 +6,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    .dark {
-        background: black;
-        color: white;
-    }
-
-    .ocean {
-        background: skyblue;
-        color: navy;
-    }
-
-    .sunset {
-        background: orange;
-        color: white;
-    }
-</style>
 
 <body>
-    <input type="text" id="profileName">
-    <select name="" id="theme">
-        <option value="dark">Dark</option>
-        <option value="ocean">Ocean</option>
-        <option value="sunset">Sunset</option>
-    </select>
-    <button type="submit" id="btn">Save</button>
-
-    <header id="header"></header>
+    <!-- <table id="table">
+        <tr>
+            <th>employeeCode</th>
+            <th>Value</th>
+        </tr>
+    </table>
     <script>
-        const theme = document.getElementById("theme");
-        const name = document.getElementById("profileName");
-        const btn = document.getElementById("btn")
+        let employeeAccess = {};
 
-        window.onload = function () {
+        Object.defineProperties(employeeAccess,{
+            employeeCode : {value : 101 , writable : false , configurable : true,enumerable : true},
+            department : {value : "IT" , writable : true , configurable : true,enumerable : false},
+            accessLevel : {value : "IT" , writable : true , configurable : true,enumerable : true}
+        })
 
-            const saved = JSON.parse(localStorage.getItem("preferences"));
+        Object.entries(employeeAccess).forEach(([key,value] )=>{
+            const table = document.getElementById("table");
+            const tr = document.createElement("tr");
 
-            if (saved) {
+            tr.innerHTML = `
+               <td>${key}</td>
+               <td>${value}</td>
+           `
+           table.append(tr);
+        })
+    </script> -->
 
-                name.value = saved.name;
-                theme.value = saved.theme;
+    <!-- <button id="btn">notification Counter (0)</button>
 
-                applyTheme(saved.theme);
-
-                header.innerText =
-                    `Currently watching as: ${saved.name}`;
+    <script>
+        class NotificationCounter{
+            constructor(id){
+                this.btn = document.getElementById(id);
+                this.noti = 0;
+                this.update = this.update.bind(this);
+                this.btn.addEventListener("click",this.update);
             }
 
+            update(){
+                this.noti++;
+                this.btn.innerText = `Notification Counter (${this.noti})`;
+            }
         }
 
-        btn.addEventListener("click", () => {
+        const a = new NotificationCounter("btn");
+    </script> -->
 
-            const preferences = {
-
-                name: name.value,
-                theme: theme.value
-
-            };
-
-            localStorage.setItem(
-                "preferences",
-                JSON.stringify(preferences)
-            );
-
-            applyTheme(preferences.theme);
-
-            header.innerText =
-                `Currently watching as: ${preferences.name}`;
-
-        });
-
-
-        function applyTheme(theme) {
-
-            document.body.className = "";
-
-            document.body.classList.add(theme);
-
+    <!-- <main id="section"></main>
+    <script>
+        Array.prototype.myMap = function (callback, thisArg) {
+            let result = [];
+            for (let i = 0; i < this.length; i++) {
+                if (!(i in this)) continue;
+                result[i] = callback.call(thisArg, this[i], i, this);
+            }
+            return result;
         }
 
+        const products = [
+            { name: "Keyboard", price: 1200 },
+            { name: "Mouse", price: 600 },
+            { name: "Laptop", price: 60000 },
+            { name: "Monitor", price: 18000 }
+        ]
 
+        products.myMap(function(products){
+            const a = document.getElementById("section");
+            const p = document.createElement("p");
+            p.innerText = products.name;
+
+            a.append(p);
+        })
+
+    </script> -->
+
+    <ul id="student-list"></ul>
+    <script>
+        function StudentCard(name) {
+            this.name = name;
+            this.element = document.createElement("li");
+            this.element.innerText = this.name;
+        }
+
+        StudentCard.prototype.appendCard = function () {
+            document.getElementById("student-list").appendChild(this.element);
+        }
+
+        function CRStudent(name) {
+            StudentCard.call(this, name);
+        }
+
+        CRStudent.prototype = Object.create(StudentCard.prototype);
+        CRStudent.prototype.constructor = CRStudent;
+
+        CRStudent.prototype.markClassRepresentative = function () {
+            this.element.style.backgroundColor = "green";
+            this.element.innerText += " (CR)";
+        }
+
+        const student = new CRStudent("Aman");
+
+        student.appendCard();
+        student.markClassRepresentative();
 
     </script>
+
+
+
 </body>
 
 </html>
