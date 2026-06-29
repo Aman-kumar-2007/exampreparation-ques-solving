@@ -145,6 +145,54 @@
         const a = new CryptoTracker("btn");
     </script> -->
 
+
+    <!-- <input id="ownerName">
+    <input id="vehicleNumber">
+    <button id="bookSlot">Book Slot</button>
+    <div id="parking-info"></div>
+
+    <script>
+        function ParkingReservation(ownerName, vehicleNumber) {
+            this.ownerName = ownerName;
+            this.vehicleNumber = vehicleNumber;
+        }
+
+        ParkingReservation.prototype.saveReservation = function () {
+            const data = {
+                ownerName: this.ownerName,
+                vehicleNumber: this.vehicleNumber
+            }
+
+            localStorage.setItem("parkingReservation", JSON.stringify(data));
+
+            const storedData = JSON.parse(localStorage.getItem("parkingReservation"));
+
+            const p = document.createElement("p");
+
+            p.innerHTML = `
+        Owner : ${storedData.ownerName}<br>
+        Vehicle : ${storedData.vehicleNumber}
+    `;
+
+            const div = document.getElementById("parking-info");
+            div.innerHTML = "";
+            div.appendChild(p);
+        }
+
+        document.getElementById("bookSlot").addEventListener("click", () => {
+            const a = document.getElementById("ownerName").value;
+            const b = document.getElementById("vehicleNumber").value;
+
+            const p = new ParkingReservation(a, b);
+            p.saveReservation();
+        })
+
+    </script> -->
+
+
+
+
+    
 </body>
 
 </html>
