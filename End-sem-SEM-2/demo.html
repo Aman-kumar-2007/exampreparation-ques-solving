@@ -191,7 +191,7 @@
 
 
 
-    <table id="table">
+    <!-- <table id="table">
     </table>
 
     <script>
@@ -228,7 +228,38 @@
 
             table.append(tr);
         })
-    </script>
+    </script> -->
+
+    <!-- <button id="btn">Destroy</button>
+    <script>
+        class WeatherWidget{
+            constructor(id){
+                this.element = document.createElement("span");
+                document.body.append(this.element);
+                this.temp = 0;
+                this.destroyWidget = this.destroyWidget.bind(this);
+                this.update = this.update.bind(this);
+                this.btn = document.getElementById(id);
+                this.btn.addEventListener("click",this.destroyWidget);
+                this.timer = setInterval(this.update,1000);
+            }
+
+            update(){
+                this.temp = (Math.random()*100).toFixed(2);
+                this.element.innerText = this.temp;
+            }
+
+            destroyWidget(){
+                clearInterval(this.timer);
+                this.element.remove();
+                this.temp = null;
+            }
+        }
+
+        const a = new WeatherWidget("btn");
+    </script> -->
+
+    
 
 </body>
 
