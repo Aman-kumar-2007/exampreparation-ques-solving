@@ -289,9 +289,31 @@
 
     </script> -->
 
+    <!-- <script>
+        Array.prototype.myReduce = function (callback, initialValue) {
+            let acc = initialValue;
+
+            for (let i = 0; i < this.length; i++) {
+                if (!(i in this)) continue;
+                acc = callback(acc, this[i]);
+            }
+
+            return acc;
+        }
+
+        const Marks = [
+            { name: "A", marks: 85 },
+            { name: "B", marks: 90 },
+            { name: "C", marks: 78 },
+            { name: "D", marks: 92 }
+        ]
+
+        console.log(Marks.myReduce((acc,Marks) => acc + Marks.marks,0));
+
+    </script> -->
 
 
-    
+
 </body>
 
 </html>
