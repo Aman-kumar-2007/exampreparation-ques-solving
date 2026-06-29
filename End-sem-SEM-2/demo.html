@@ -259,8 +259,39 @@
         const a = new WeatherWidget("btn");
     </script> -->
 
-    
+    <!-- <script>
+        Array.prototype.myFilter = function (callback, thisArg) {
+            let result = [];
+            for (let i = 0; i < this.length; i++) {
+                if (!(i in this)) continue;
 
+                if (callback(this[i], i, this)) {
+                    result.push(this[i]);
+                }
+
+
+            }
+            return result;
+        }
+
+        const products = [
+            { name: "Milk", price: 40 },
+            { name: "Rice", price: 80 },
+            { name: "TV", price: 40000 },
+            { name: "Bread", price: 30 }
+        ]
+
+        console.log(products.myFilter(function (product) {
+            return product.price < 100;
+        })
+);
+
+
+    </script> -->
+
+
+
+    
 </body>
 
 </html>
