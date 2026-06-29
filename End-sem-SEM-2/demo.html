@@ -83,7 +83,7 @@
 
     </script> -->
 
-    <ul id="student-list"></ul>
+    <!-- <ul id="student-list"></ul>
     <script>
         function StudentCard(name) {
             this.name = name;
@@ -112,9 +112,38 @@
         student.appendCard();
         student.markClassRepresentative();
 
-    </script>
+    </script> -->
 
 
+    <!-- <button id="btn">destroy</button>
+    <script>
+        class CryptoTracker{
+            constructor(id){
+                this.priceNode = 0;
+                this.btn = document.getElementById(id);
+                this.element = document.createElement("span");
+
+                this.destroy = this.destroy.bind(this);
+                this.update = this.update.bind(this);
+
+                this.timer = setInterval(this.update ,500);
+                this.btn.addEventListener("click",this.destroy);
+            }
+
+            update(){
+                this.priceNode++;
+                this.element.innerText = `$${this.priceNode}`;
+                document.body.appendChild(this.element);
+            }
+            destroy(){
+                clearInterval(this.timer);
+                this.element.remove();
+                this.priceNode = null;
+            }
+        }
+
+        const a = new CryptoTracker("btn");
+    </script> -->
 
 </body>
 
