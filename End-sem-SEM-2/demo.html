@@ -191,8 +191,45 @@
 
 
 
+    <table id="table">
+    </table>
 
-    
+    <script>
+        let bankCustomer = {};
+        Object.defineProperties(bankCustomer,{
+            accountNumber : {
+                value : 1010000102,
+                writable : false,
+                enumerable : true,
+                configurable : true
+            },
+            branch : {
+                value : "Chapra",
+                writable : true,
+                enumerable : false,
+                configurable : true
+            },
+            balance : {
+            
+                value : 700000,
+                writable : true,
+                enumerable : true,
+                configurable : true
+            }
+        })
+
+        Object.entries(bankCustomer).forEach(([key,value]) => {
+            const table = document.getElementById("table");
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+               <td>${key}</td>
+               <td>${value}</td>
+            `;
+
+            table.append(tr);
+        })
+    </script>
+
 </body>
 
 </html>
